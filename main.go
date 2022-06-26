@@ -1,14 +1,16 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"io"
-
-	"github.com/alwindoss/kjv"
 )
 
+//go:embed data
+var kjvFS embed.FS
+
 func main() {
-	f, err := kjv.FS.Open("kjvsrc/kjv-1769.txt")
+	f, err := kjvFS.Open("data/kjv-1769.txt")
 	if err != nil {
 		panic(err)
 	}
